@@ -20,3 +20,7 @@ pub mod server;
 
 /// all endpoints routing
 pub mod controllers;
+
+pub mod commands;
+
+pub mod config;

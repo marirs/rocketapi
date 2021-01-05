@@ -2,10 +2,11 @@ use rocket::config::{Config, Environment, Limits};
 
 use std::path::Path;
 
+use crate::config::Settings;
 use crate::{
     controllers::{others, users},
     db::mongo::init_db_pool,
-    server::{catchers, config::Settings, core::cert},
+    server::{catchers, core::cert},
 };
 
 #[cfg(debug_assertions)]

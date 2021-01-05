@@ -40,15 +40,24 @@ impl User {
 
     pub fn create(param: CreateUserParam) -> Self {
         Self {
-            acl_allow_ips: vec![],
-            acl_deny_endpoints: vec![],
             api_key: Self::generate_api_key(&param.email),
             created_by: param.created_by,
             created_ip: param.created_ip,
-            created_on: Utc::now(),
             super_user: false,
-            throttle: 0,
             user_email: param.email,
+            ..Default::default()
+        }
+    }
+
+    pub fn create_superuser(params: CreateUserParam) -> Self {
+        Self {
+            acl_allow_ips: vec!["127.0.0.1".to_string()],
+            api_key: Self::generate_api_key(&params.email),
+            created_by: params.created_by,
+            created_ip: params.created_ip,
+            super_user: true,
+            user_email: params.email,
+            ..Default::default()
         }
     }
 
@@ -71,6 +80,22 @@ impl User {
         }
         if let Some(throttle) = params.throttle {
             self.throttle = throttle;
+        }
+    }
+}
+
+impl Default for User {
+    fn default() -> Self {
+        Self {
+            acl_allow_ips: vec![],
+            acl_deny_endpoints: vec![],
+            api_key: "".to_string(),
+            created_by: "".to_string(),
+            created_ip: "".to_string(),
+            created_on: Utc::now(),
+            super_user: false,
+            throttle: 0,
+            user_email: "".to_string(),
         }
     }
 }
@@ -137,5 +162,28 @@ mod tests {
         );
         assert_eq!(user.acl_allow_ips, vec!["127.0.0.1".to_string()]);
         assert_eq!(user.throttle, 3);
+    }
+
+    #[test]
+    fn test_create_superuser() {
+        let params = CreateUserParam {
+            email: "admin@abc.com".to_string(),
+            created_by: "command_line".to_string(),
+            created_ip: "command_line".to_string(),
+        };
+
+        let superuser = User::create_superuser(params);
+        let endpoints: Vec<String> = vec![];
+        let ips: Vec<String> = vec!["127.0.0.1".to_string()];
+        assert_eq!(superuser.acl_deny_endpoints, endpoints);
+        assert_eq!(superuser.acl_allow_ips, ips);
+        assert_eq!(superuser.user_email, "admin@abc.com".to_string());
+        assert_eq!(superuser.super_user, true);
+        assert_eq!(superuser.created_by, "command_line".to_string());
+        assert_eq!(superuser.created_ip, "command_line".to_string());
+        assert_eq!(
+            superuser.api_key,
+            "840429E9751676F45BDA049269ECFB9037F185D92D92958FF6962649402CDBD9".to_string()
+        );
     }
 }
