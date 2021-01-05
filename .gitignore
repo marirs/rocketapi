@@ -1,0 +1,10 @@
+target/
+private/
+Cargo.lock
+
+.DS_Store
+.idea/
+.vs_code/
+
+*.zip
+config.yml
