@@ -40,6 +40,9 @@ serde_derive = "1"
 serde_json = "1"
 sha2 = "0.9.2"
 
+[badges]
+travis-ci = { repository = "marirs/rocketapi" }
+
 [[bin]]
 name = "rocketapi"
 path = "src/main.rs"
