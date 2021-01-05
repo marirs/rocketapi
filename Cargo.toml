@@ -18,7 +18,8 @@ authors = [
 exclude = [
     ".gitignore",
     ".config.yml",
-    "docs"
+    "docs",
+    "configs"
 ]
 edition = "2018"
 

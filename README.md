@@ -42,6 +42,18 @@ cargo build --release
 ```bash
 ./target/release/gatekeeper --createsuperuser
 ```
+
+### Configs  
+The `configs` folder has configurations to start the server as a service and nginx config to server this rocketapi server in reverse proxy mode.
+- Start the rocketapi server as a service
+```text
+1) copy the configs/rocketapi.service to /etc/systemd/system folder
+2) systemctl enable rocketapi
+3) systemctl start rocketapi
+```
+
+- Then you can copy the `configs/nginx-server-config` to `/etc/nginx/sites-enabled` to acces the rocketapi server via nginx.
+
 ---
 
 If you need a python version, a python fastapi version can be found [here](https://github.com/marirs/fastapi-boilerplate).
