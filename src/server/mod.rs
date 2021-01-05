@@ -1,6 +1,3 @@
-/// Configuration related
-pub mod config;
-
 /// catchers for unavailable routes
 pub(crate) mod catchers;
 

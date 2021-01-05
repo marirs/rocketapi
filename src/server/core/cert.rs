@@ -13,7 +13,7 @@ use std::{
     io::{Result, Write},
 };
 
-use crate::server::config::SSL;
+use crate::config::SSL;
 
 pub fn generate_cert(cert_config: SSL) -> Result<()> {
     //! Generates a SSL Certificate

@@ -4,8 +4,8 @@ use r2d2_mongodb::{ConnectionOptions, MongodbConnectionManager};
 
 use super::errors::RepositoryError;
 use super::prelude::UserRepository;
+use crate::config::DbConfig;
 use crate::models::users::User;
-use crate::server::config::DbConfig;
 
 pub type Pool = r2d2::Pool<MongodbConnectionManager>;
 pub type Conn = r2d2::PooledConnection<MongodbConnectionManager>;

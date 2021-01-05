@@ -29,18 +29,18 @@ cargo build --release
 ### Starting the server
 - using a config file
 ```bash
-./target/release/gatekeeper -c config.sample.yml
+./target/release/gatekeeper runserver -f <CONFIG_PATH>
 ```
 - using a total default configuration
 ```bash
-./target/release/gatekeeper
+./target/release/gatekeeper runserver
 ```
 
 - When the server is enabled to start with SSL, the certs will be generated in the same folder called `private`.
 ---
 ### Creating your first user
 ```bash
-./target/release/gatekeeper --createsuperuser
+./target/release/gatekeeper createsuperuser -e <EMAIL> -f <CONFIG_PATH>
 ```
 
 ### Configs  

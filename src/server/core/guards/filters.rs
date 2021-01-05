@@ -8,9 +8,9 @@ use bson::{doc, ordered::OrderedDocument};
 
 use r2d2_mongodb::mongodb::db::ThreadedDatabase;
 
+use crate::config::DbConfig;
+use crate::db::mongo::Pool;
 use crate::models::users::User;
-use crate::{db::mongo::Pool, server::config::DbConfig};
-
 pub struct FilterGuard {
     pub creator: String,
 }
