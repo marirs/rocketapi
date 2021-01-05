@@ -11,10 +11,14 @@ keywords = [
     "api management", "mongodb", "rocket"
 ]
 categories = ["authentication", "database", "web-programming"]
-authors = ["MARIRS <marirs@gmail.com>"]
+authors = [
+    "MARIRS <marirs@gmail.com>",
+    "HenryBee <henrybyhee@gmail.com>"
+]
 exclude = [
     ".gitignore",
     ".config.yml",
+    "docs"
 ]
 edition = "2018"
 
