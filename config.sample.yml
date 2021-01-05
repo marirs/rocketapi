@@ -1,0 +1,38 @@
+---
+# api server configuration
+api_server:
+  # api server listening ip
+  host: 0.0.0.0
+  # api server listening port
+  port: 8080
+  # keep-alive timeout to timeout seconds.
+  # If timeout is 0, keep-alive is disabled.
+  keep_alive: 60
+  # in bytes from an incoming form request will be read
+  forms_limit: 262144
+  # in bytes from an incoming json request will be read
+  json_limit: 1048576
+  # Sets the secret_key
+  secret_key: 8Xui8SN4mI+7egV/9dlfYYLGQJeEx4+DwmSQLwDVXJg=
+# ssl configuration
+ssl:
+  # if true starts the server using ssl config
+  enabled: false
+  # common name to be used for cert generation
+  common_name: localhost
+  # certificate validity in days
+  certificate_validity: 90
+# database configuration
+db:
+  # mongo host to connect to
+  mongo_host: localhost
+  # port to connect to
+  mongo_port: 27017
+  # db name to use
+  db_name: rocketapi
+  # collection name to use
+  collection_name: users
+  # user if any to authenticate with mongo
+  auth_user: ""
+  # password for user authentication
+  auth_pass: ""
