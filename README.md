@@ -1,5 +1,5 @@
-API REST Server using Rocket.rs
---------------------------------
+Gatekeeper: API REST Server using Rocket.rs
+--------------------------------------------
 [![Build Status](https://travis-ci.com/marirs/rocketapi.svg?branch=master)](https://travis-ci.com/marirs/rocketapi)
 
 A Skeleton API Rest server using [Rocket](https://rocket.rs/) with the backend database as [MongoDB](https://www.mongodb.com/).
@@ -11,7 +11,7 @@ A Skeleton API Rest server using [Rocket](https://rocket.rs/) with the backend d
   - mongodb configurations
 - Use the `x-api-key` header to validate `API Keys`
 - `Restrict` a client connecting IP Addresses to the endpoints using `Allow ACL`
-- `Restrict` endpoints using the `Deny ACL`  
+- `Restrict` endpoints using the `Deny ACL`
 - `Rate limiter` to throttle incoming requests to endpoints
 - Extend this rocketapi server's boiler plate; with your endpoints
 
@@ -29,19 +29,22 @@ cargo build --release
 ### Starting the server
 - using a config file
 ```bash
-./target/release/rocketapi -c config.sample.yml
+./target/release/gatekeeper -c config.sample.yml
 ```
 - using a total default configuration
 ```bash
-./target/release/rocketapi
+./target/release/gatekeeper
 ```
 
 - When the server is enabled to start with SSL, the certs will be generated in the same folder called `private`.
 ---
 ### Creating your first user
 ```bash
-./target/release/rocketapi --createsuperuser
+./target/release/gatekeeper --createsuperuser
 ```
+---
+
+If you need a python version, a python fastapi version can be found [here](https://github.com/marirs/fastapi-boilerplate).
 
 ---
 ### Contribution
