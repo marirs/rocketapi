@@ -1,5 +1,5 @@
-Gatekeeper: API REST Server using Rocket.rs
---------------------------------------------
+API REST Server using Rocket.rs
+--------------------------------
 [![Build Status](https://travis-ci.com/marirs/rocketapi.svg?branch=master)](https://travis-ci.com/marirs/rocketapi)
 
 A Skeleton API Rest server using [Rocket](https://rocket.rs/) with the backend database as [MongoDB](https://www.mongodb.com/).
