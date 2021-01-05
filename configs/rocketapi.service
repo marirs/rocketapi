@@ -9,7 +9,7 @@ PIDFile=/run/rocketapi.pid
 User=root
 Group=www-data
 WorkingDirectory=/opt/rocketapi
-ExecStart=/opt/rocketapi/rocketapi -c /opt/rocketapi/config.yml
+ExecStart=/opt/rocketapi/rocketapi runserver -f /opt/rocketapi/config.yml
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s TERM $MAINPID
 
