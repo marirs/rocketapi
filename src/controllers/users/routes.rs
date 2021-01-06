@@ -1,7 +1,9 @@
 use super::request::AddUserParams;
 use crate::db::{mongo::UserMongoRepository, prelude::*};
 use crate::models::users::{CreateUserParam, UpdateUserParam, User};
-use crate::server::core::guards::{db::MongoConnection, filters::FilterGuard};
+use crate::server::core::guards::{
+    db::MongoConnection, filters::FilterGuard, superuser::SuperUserGuard,
+};
 use crate::server::errors::ApiError;
 use crate::server::response::ApiResponse;
 use rocket::{http::Status, response::status};
@@ -17,7 +19,11 @@ pub fn my_info(_a: FilterGuard) -> status::Custom<JsonValue> {
 }
 
 #[get("/list")]
-pub fn list_users(_guard: FilterGuard, pool: MongoConnection) -> Result<ApiResponse, ApiError> {
+pub fn list_users(
+    _superuser: SuperUserGuard,
+    _guard: FilterGuard,
+    pool: MongoConnection,
+) -> Result<ApiResponse, ApiError> {
     //! List all Users
     let user_repo = UserMongoRepository::new(pool.conn);
     let users = user_repo.list()?;
@@ -29,6 +35,7 @@ pub fn list_users(_guard: FilterGuard, pool: MongoConnection) -> Result<ApiRespo
 
 #[post("/add", data = "<params>")]
 pub fn add_user(
+    _superuser: SuperUserGuard,
     guard: FilterGuard,
     client_ip: SocketAddr,
     pool: MongoConnection,
@@ -50,6 +57,7 @@ pub fn add_user(
 
 #[post("/modify/<api_key>", data = "<params>")]
 pub fn modify_user(
+    _superuser: SuperUserGuard,
     _guard: FilterGuard,
     pool: MongoConnection,
     api_key: String,
@@ -67,6 +75,7 @@ pub fn modify_user(
 
 #[post("/delete/<api_key>")]
 pub fn delete_user(
+    _superuser: SuperUserGuard,
     _guard: FilterGuard,
     pool: MongoConnection,
     api_key: String,
