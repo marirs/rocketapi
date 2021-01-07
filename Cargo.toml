@@ -32,6 +32,7 @@ config = "0.10.1"
 chrono = { version = "0.4.19", features =["serde"] }
 data-encoding = "2.3.1"
 openssl = "0.10.32"
+ratelimit = { path = "./ratelimit" }
 r2d2 = "0.8.9"
 r2d2-mongodb = "0.2.2"
 rocket = { version = "0.4.6", features = ["tls"] }
