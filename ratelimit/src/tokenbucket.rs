@@ -31,23 +31,22 @@ impl TokenBucket {
 }
 impl RateLimiter for TokenBucket {
     fn allow(&mut self, request_time: i64) -> bool {
+        use std::cmp::max;
         // Refill token since last access.
         self.refill(request_time);
+        // Consume tokens if possible
+        let prev_token_count = self.tokens;
+        self.tokens = max(0, self.tokens - 1);
 
         self.last_access = request_time;
-        // Consume tokens if possible
-        if self.tokens == 0 {
-            return false;
-        }
-        self.tokens = self.tokens - 1;
-        true
+        prev_token_count > 0
     }
 }
 
 #[cfg(test)]
 mod tests {
     use super::{super::prelude::*, TokenBucket};
-    use chrono::{TimeZone, Utc};
+    use chrono::{Utc, TimeZone};
 
     #[test]
     fn test_refill_buket() {
