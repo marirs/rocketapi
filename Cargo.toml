@@ -35,8 +35,8 @@ openssl = "0.10.32"
 ratelimit = { path = "./ratelimit" }
 r2d2 = "0.8.9"
 r2d2-mongodb = "0.2.2"
-rocket = { version = "0.4.6", features = ["tls"] }
-rocket_contrib = { version = "0.4.6", default-features = false, features = ["json"] }
+rocket = { version = "0.4.10", features = ["tls"] }
+rocket_contrib = { version = "0.4.10", default-features = false, features = ["json"] }
 serde = { version = "1", features = ["derive"] }
 serde_derive = "1"
 serde_json = "1"
