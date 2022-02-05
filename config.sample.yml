@@ -36,7 +36,7 @@ mongo_db:
   # configure any different db:collection for use internally
   db:
     # user database to connect
-    user_db: analyzers
+    user_db: users
     # user collection to query for user check
     user_collection: users
 

@@ -17,6 +17,10 @@ A Skeleton API Rest server using [Rocket](https://rocket.rs/) with the backend d
 
 ![architecture](docs/rocketapi.png "Architecture")
 
+### Requirements
+
+- Rust 1.56+ (2021 edition)
+
 ---
 ### Compile
 

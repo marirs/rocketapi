@@ -1,5 +1,5 @@
-use rocketapi::server::init_server;
 use rocket::error::Error;
+use rocketapi::server::init_server;
 use std::process::exit;
 
 #[rocket::main]

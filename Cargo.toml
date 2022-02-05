@@ -1,6 +1,6 @@
 [package]
 name = "rocketapi"
-version = "0.2.1"
+version = "0.3.1"
 description = "API Server with api key access and access control lists"
 authors = ["Marirs <marirs@gmail.com>"]
 license = "Apache-2.0 License"
@@ -18,24 +18,22 @@ exclude = [
     "docs",
     "configs"
 ]
-edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+edition = "2021"
 
 [dependencies]
-clap ="3.0.0-beta.2"
+clap = { version = "3.0.14", features = ["cargo", "derive"] }
 chrono = { version = "0.4.19", features = ["serde"] }
 config = "0.11.0"
-derive_more = { version = "0.99.16", features = ["deref", "display"] }
-futures = "0.3.16"
-mongodb = { version = "2.0.0-beta.2", default-features = false, features = ["async-std-runtime"] }
-openssl = "0.10.35"
+derive_more = { version = "0.99.17", features = ["deref", "display"] }
+futures = "0.3.19"
+mongodb = { version = "2.1.0", default-features = false, features = ["async-std-runtime"] }
+openssl = { version = "0.10.38", features = ["vendored"] }
 rocket = { version = "0.5.0-rc.1", features = ["json", "secrets", "tls"] }
-serde = { version = "1.0.127", features = ["derive"] }
-strum = { version = "0.21.0", features = ["derive"] }
-thiserror = "1.0.26"
+serde = { version = "1.0.136", features = ["derive"] }
+strum = { version = "0.23.0", features = ["derive"] }
+thiserror = "1.0.30"
 throttle = "0.1.0"
-uuid = { version = "0.8.2", features = ["v5"] }
+uuid = { version = "1.0.0-alpha.1", features = ["v5"] }
 
 [badges]
 travis-ci = { repository = "marirs/rocketapi" }

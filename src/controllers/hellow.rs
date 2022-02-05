@@ -1,9 +1,5 @@
-use rocket::{
-    http::Status,
-    serde::json::Value,
-};
 use crate::secure::guards::UserGuard;
-
+use rocket::{http::Status, serde::json::Value};
 
 #[get("/ping")]
 pub fn ping(_user_guard: UserGuard) -> (Status, Value) {

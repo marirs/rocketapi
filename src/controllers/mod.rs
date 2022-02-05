@@ -1,6 +1,6 @@
+pub mod hellow;
 pub mod index;
 pub mod users;
-pub mod hellow;
 
 use rocket::{http::Status, serde::json::Value};
 use serde::Serialize;
