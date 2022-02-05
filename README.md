@@ -1,6 +1,8 @@
 API REST Server using Rocket.rs
 --------------------------------
-[![Build Status](https://travis-ci.com/marirs/rocketapi.svg?branch=main)](https://travis-ci.com/marirs/rocketapi)
+[![Linux Arm7](https://github.com/marirs/rocketapi/actions/workflows/linux_arm.yml/badge.svg)](https://github.com/marirs/rocketapi/actions/workflows/linux_arm.yml)
+[![Linux x86_64](https://github.com/marirs/rocketapi/actions/workflows/linux_x86_64.yml/badge.svg)](https://github.com/marirs/rocketapi/actions/workflows/linux_x86_64.yml)
+[![macOS intel](https://github.com/marirs/rocketapi/actions/workflows/macos_x86_64.yml/badge.svg)](https://github.com/marirs/rocketapi/actions/workflows/macos_x86_64.yml)
 
 A Skeleton API Rest server using [Rocket](https://rocket.rs/) with the backend database as [MongoDB](https://www.mongodb.com/).
 
