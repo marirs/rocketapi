@@ -25,7 +25,7 @@ pub async fn create_user(
     super::generic_response(
         backend
             .insert_user(
-                new_user.to_owned(),
+                new_user.0,
                 guard.ip.to_string(),
                 guard.email.clone(),
             )

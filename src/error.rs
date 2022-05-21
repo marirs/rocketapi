@@ -39,7 +39,7 @@ pub enum Error {
     TooManyRequests,
 
     #[error("Configuration Error")]
-    ConfigurationError,
+    ConfigurationError(String),
     #[error("Config file not found")]
     ConfigFileNotFound,
     #[error("Error getting ssl certificates")]

@@ -45,14 +45,15 @@ impl Settings {
         //! Settings::from_file("config.sample.yml");
         //! ```
         //!
-        let mut cfg = config::Config::default();
-        cfg.merge(config::File::with_name(path.as_ref().to_str().unwrap()))?;
-        match cfg.try_into() {
-            Ok(c) => Ok(c),
-            Err(e) => {
-                println!("err: {:?}", e);
-                Err(Error::ConfigurationError)
-            }
+        match config::Config::builder()
+            .add_source(config::File::with_name(path.as_ref().to_str().unwrap()))
+            .build()
+        {
+            Ok(c) => match c.try_deserialize() {
+                Ok(cfg) => Ok(cfg),
+                Err(e) => Err(Error::ConfigurationError(e.to_string())),
+            },
+            Err(e) => Err(Error::ConfigurationError(e.to_string())),
         }
     }
 }
