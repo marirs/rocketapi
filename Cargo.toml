@@ -1,6 +1,6 @@
 [package]
 name = "rocketapi"
-version = "0.3.1"
+version = "0.4.0"
 description = "API Server with api key access and access control lists"
 authors = ["Marirs <marirs@gmail.com>"]
 license = "Apache-2.0 License"
