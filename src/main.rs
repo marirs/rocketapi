@@ -6,13 +6,10 @@ use std::process::exit;
 async fn main() -> Result<(), Error> {
     // start the server
     match init_server().await {
-        Ok(server) => {
-            let _ = server.launch().await;
-        },
+        Ok(server) => server.launch().await.map(|_| ()),
         Err(e) => {
             println!("{}", e);
             exit(1)
         }
     }
-    Ok(())
 }
