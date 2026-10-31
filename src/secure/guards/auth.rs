@@ -29,19 +29,19 @@ impl<'r> FromRequest<'r> for UserGuard {
         let backend = try_outcome!(request
             .guard::<&State<MongodbBackend>>()
             .await
-            .map_failure(|_| (Status::InternalServerError, Error::InternalError)));
+            .map_error(|_| (Status::InternalServerError, Error::InternalError)));
 
         let handler = try_outcome!(request
             .guard::<&State<EndpointHandler>>()
             .await
-            .map_failure(|_| (Status::InternalServerError, Error::InternalError)));
+            .map_error(|_| (Status::InternalServerError, Error::InternalError)));
 
         match super::get_user_from_request(request, backend, handler)
             .await
             .map(Self)
         {
             Ok(guard) => Outcome::Success(guard),
-            Err(e) => Outcome::Failure((e.to_status(), e)),
+            Err(e) => Outcome::Error((e.to_status(), e)),
         }
     }
 }
@@ -54,12 +54,12 @@ impl<'r> FromRequest<'r> for AdminGuard {
         let backend = try_outcome!(request
             .guard::<&State<MongodbBackend>>()
             .await
-            .map_failure(|_| (Status::InternalServerError, Error::InternalError)));
+            .map_error(|_| (Status::InternalServerError, Error::InternalError)));
 
         let handler = try_outcome!(request
             .guard::<&State<EndpointHandler>>()
             .await
-            .map_failure(|_| (Status::InternalServerError, Error::InternalError)));
+            .map_error(|_| (Status::InternalServerError, Error::InternalError)));
 
         match super::get_user_from_request(request, backend, handler)
             .await
@@ -71,7 +71,7 @@ impl<'r> FromRequest<'r> for AdminGuard {
                 }
             }) {
             Ok(guard) => Outcome::Success(guard),
-            Err(e) => Outcome::Failure((e.to_status(), e)),
+            Err(e) => Outcome::Error((e.to_status(), e)),
         }
     }
 }
